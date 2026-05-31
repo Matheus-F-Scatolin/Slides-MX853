@@ -180,7 +180,12 @@
 }
 
 // 8. Slide de sumário (Contents) ---------------------------------------------
-#let contents-slide(items, course: "Curso Básico", lecture: "Aula 00 — Introdução e Google Drive") = {
+#let contents-slide(
+  items,
+  course: "Curso Básico",
+  lecture: "Aula 00 — Introdução e Google Drive",
+  page-numbers: true,
+) = {
   page(
     fill: bg-paper,
     margin: (x: 130pt, top: 110pt, bottom: 80pt),
@@ -195,12 +200,20 @@
     #for (i, it) in items.enumerate() {
       block(below: 28pt)[
         #grid(
-          columns: (60pt, 1fr, auto),
-          align: (left + horizon, left + horizon, right + horizon),
+          columns: if page-numbers { (60pt, 1fr, auto) } else { (60pt, 1fr) },
+          align: if page-numbers {
+            (left + horizon, left + horizon, right + horizon)
+          } else {
+            (left + horizon, left + horizon)
+          },
           column-gutter: 20pt,
           text(fill: itt-wine, weight: "bold")[#(i+1).],
           text(fill: text-dark)[#it],
-          text(fill: text-mute, size: 26pt)[#(i+3)],
+          ..if page-numbers {
+            (text(fill: text-mute, size: 26pt)[#(i + 3)],)
+          } else {
+            ()
+          },
         )
         #v(6pt)
         #line(length: 100%, stroke: 1pt + rule-soft)

@@ -42,3 +42,27 @@ watch-%:
 clean:
 	rm -f $(AULAS_DIR)/*/*.pdf
 	rm -rf $(AULAS_DIR)/*/$(PAGES_DIR)
+
+# --- Apresentação final (apresentacao_final/) ---
+APRES_DIR := apresentacao_final
+APRES_PARTS := intro modulos modulo-09 conclusao
+APRES_PAGES := $(addsuffix -pages,$(APRES_PARTS))
+
+.PHONY: apresentacao-all apresentacao-all-pages apresentacao-clean $(APRES_PARTS) $(APRES_PAGES)
+
+apresentacao-all: $(APRES_PARTS)
+
+apresentacao-all-pages: $(APRES_PAGES)
+
+$(APRES_PARTS):
+	$(TYPST) compile --root $(ROOT) $(APRES_DIR)/$@/$@.typ
+
+$(APRES_PAGES):
+	mkdir -p $(APRES_DIR)/$(@:%-pages=%)/$(PAGES_DIR)
+	$(TYPST) compile --root $(ROOT) --ppi $(PPI) \
+		$(APRES_DIR)/$(@:%-pages=%)/$(@:%-pages=%).typ \
+		$(APRES_DIR)/$(@:%-pages=%)/$(PAGES_DIR)/slide-{0p}.png
+
+apresentacao-clean:
+	rm -f $(APRES_DIR)/*/*.pdf
+	rm -rf $(APRES_DIR)/*/$(PAGES_DIR)
