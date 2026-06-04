@@ -48,6 +48,23 @@
   rect(width: width, height: 100%, fill: itt-wine, stroke: none),
 )
 
+// Marcador de lista (▸ desenhado — evita glifo ausente no PDF)
+#let list-bullet-marker = box(
+  width: 0.55em,
+  height: 1em,
+  baseline: 42%,
+  align(center + horizon)[
+    #polygon(
+      fill: itt-wine,
+      stroke: none,
+      (0pt, 5pt),
+      (8pt, 0pt),
+      (0pt, -5pt),
+    )
+  ],
+)
+#let list-markers = (list-bullet-marker, [#text(fill: text-mute)[•]])
+
 // Footer institucional reutilizável
 #let _course-footer(course, lecture) = {
   set text(font: sans-stack, size: 18pt, fill: text-mute)
@@ -142,7 +159,7 @@
       indent: 8pt,
       body-indent: 14pt,
       spacing: 22pt,
-      marker: ([#text(fill: itt-wine, weight: "bold")[▸]], [#text(fill: text-mute)[•]]),
+      marker: list-markers,
     )
     #set enum(
       indent: 8pt,

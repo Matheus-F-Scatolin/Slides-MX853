@@ -67,7 +67,7 @@
       #text(size: 30pt, weight: "bold", fill: itt-wine-dk)[Projeto]
       #v(8pt)
       #set text(size: 28pt)
-      #set list(spacing: 14pt)
+      #set list(spacing: 14pt, marker: list-markers)
       - Treinamento *ITT/Unicamp*; vídeos, slides, roteiros, desafios e links gratuitos
       #v(16pt)
       #text(size: 30pt, weight: "bold", fill: itt-wine-dk)[Público-alvo]

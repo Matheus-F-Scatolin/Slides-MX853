@@ -6,7 +6,7 @@ Slides da apresentação de fechamento do projeto (disciplina MX853A, ITT/Unicam
 
 | Pasta | Arquivo | Função |
 |-------|---------|--------|
-| `intro/` | `intro.typ` | Contexto, equipe, mapa dos 11 módulos, roteiro |
+| `_intro/` | `intro.typ` | Contexto, equipe, mapa dos 11 módulos, roteiro |
 | `modulos/` | `modulos.typ` | Um slide-resumo por módulo (mesmo layout) |
 | `modulo-09/` | `modulo-09.typ` | Primeira implementação do padrão `modulo-XX/` |
 | `conclusao/` | `conclusao.typ` | Entregas, aprendizados, encerramento |
@@ -32,7 +32,7 @@ make conclusao
 make apresentacao-all
 ```
 
-Os PDFs ficam ao lado de cada `.typ` (ex.: `intro/intro.pdf`).
+Os PDFs ficam ao lado de cada `.typ` (ex.: `_intro/intro.pdf`).
 
 Sempre use `--root .` (o Makefile já faz isso). Imports usam `../../theme.typ` e `../../shared/`.
 
@@ -57,7 +57,7 @@ Importe as imagens **nesta ordem**, respeitando a numeração dentro de cada pas
 
 | Ordem | Pasta | Observação |
 |------:|-------|------------|
-| 1 | `intro/pages/` | Capas ITT + abertura |
+| 1 | `_intro/pages/` | Capas ITT + abertura |
 | 2 | `modulos/pages/` | 12 slides (seção + 11 módulos) |
 | 3 | `modulo-01/pages/` … `modulo-11/pages/` | Um deck por módulo; hoje só `modulo-09` existe |
 | 4 | `conclusao/pages/` | Encerramento |
@@ -82,7 +82,7 @@ Copie `modulo-09/` como modelo. Sequência de slides:
 
 (O slide "Obrigado" fica só na `conclusao/`, não em cada módulo.)
 
-Capas ITT (`shared/slide1.pdf` e `slide2.pdf`) ficam **apenas** em `intro/`.
+Capas ITT (`shared/slide1.pdf` e `slide2.pdf`) ficam **apenas** em `_intro/`.
 
 ### Criar seu módulo
 

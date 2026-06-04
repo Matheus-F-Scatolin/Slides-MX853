@@ -45,14 +45,24 @@ clean:
 
 # --- Apresentação final (apresentacao_final/) ---
 APRES_DIR := apresentacao_final
-APRES_PARTS := intro modulos modulo-09 conclusao
+APRES_PARTS := modulos modulo-09 conclusao
 APRES_PAGES := $(addsuffix -pages,$(APRES_PARTS))
+APRES_INTRO_DIR := _intro
 
-.PHONY: apresentacao-all apresentacao-all-pages apresentacao-clean $(APRES_PARTS) $(APRES_PAGES)
+.PHONY: apresentacao-all apresentacao-all-pages apresentacao-clean intro intro-pages $(APRES_PARTS) $(APRES_PAGES)
 
-apresentacao-all: $(APRES_PARTS)
+apresentacao-all: intro $(APRES_PARTS)
 
-apresentacao-all-pages: $(APRES_PAGES)
+apresentacao-all-pages: intro-pages $(APRES_PAGES)
+
+intro:
+	$(TYPST) compile --root $(ROOT) $(APRES_DIR)/$(APRES_INTRO_DIR)/intro.typ
+
+intro-pages:
+	mkdir -p $(APRES_DIR)/$(APRES_INTRO_DIR)/$(PAGES_DIR)
+	$(TYPST) compile --root $(ROOT) --ppi $(PPI) \
+		$(APRES_DIR)/$(APRES_INTRO_DIR)/intro.typ \
+		$(APRES_DIR)/$(APRES_INTRO_DIR)/$(PAGES_DIR)/slide-{0p}.png
 
 $(APRES_PARTS):
 	$(TYPST) compile --root $(ROOT) $(APRES_DIR)/$@/$@.typ
@@ -64,5 +74,5 @@ $(APRES_PAGES):
 		$(APRES_DIR)/$(@:%-pages=%)/$(PAGES_DIR)/slide-{0p}.png
 
 apresentacao-clean:
-	rm -f $(APRES_DIR)/*/*.pdf
-	rm -rf $(APRES_DIR)/*/$(PAGES_DIR)
+	rm -f $(APRES_DIR)/*/*.pdf $(APRES_DIR)/$(APRES_INTRO_DIR)/*.pdf
+	rm -rf $(APRES_DIR)/*/$(PAGES_DIR) $(APRES_DIR)/$(APRES_INTRO_DIR)/$(PAGES_DIR)
