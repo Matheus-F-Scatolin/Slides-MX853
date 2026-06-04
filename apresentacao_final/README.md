@@ -6,12 +6,12 @@ Slides da apresentação de fechamento do projeto (disciplina MX853A, ITT/Unicam
 
 | Pasta | Arquivo | Função |
 |-------|---------|--------|
-| `_intro/` | `intro.typ` | Contexto, equipe, mapa dos 11 módulos, roteiro |
+| `0_intro/` | `intro.typ` | Contexto, equipe, mapa dos 11 módulos, roteiro |
 | `modulos/` | `modulos.typ` | Um slide-resumo por módulo (mesmo layout) |
-| `modulo-09/` | `modulo-09.typ` | Primeira implementação do padrão `modulo-XX/` |
+| `9_modulo-09/` | `modulo-09.typ` | Primeira implementação do padrão `modulo-XX/` |
 | `conclusao/` | `conclusao.typ` | Entregas, aprendizados, encerramento |
 
-Cada colega deve criar `modulo-01/`, `modulo-02/`, … copiando o padrão de `modulo-09/` (ver abaixo).
+Cada colega deve criar `X_modulo-XX/` (ex: `1_modulo-01/`) copiando o padrão de `9_modulo-09/` (ver abaixo).
 
 ## Pré-requisitos
 
@@ -32,7 +32,7 @@ make conclusao
 make apresentacao-all
 ```
 
-Os PDFs ficam ao lado de cada `.typ` (ex.: `_intro/intro.pdf`).
+Os PDFs ficam ao lado de cada `.typ` (ex.: `0_intro/intro.pdf`).
 
 Sempre use `--root .` (o Makefile já faz isso). Imports usam `../../theme.typ` e `../../shared/`.
 
@@ -57,18 +57,18 @@ Importe as imagens **nesta ordem**, respeitando a numeração dentro de cada pas
 
 | Ordem | Pasta | Observação |
 |------:|-------|------------|
-| 1 | `_intro/pages/` | Capas ITT + abertura |
+| 1 | `0_intro/pages/` | Capas ITT + abertura |
 | 2 | `modulos/pages/` | 12 slides (seção + 11 módulos) |
-| 3 | `modulo-01/pages/` … `modulo-11/pages/` | Um deck por módulo; hoje só `modulo-09` existe |
+| 3 | `1_modulo-01/pages/` … `11_modulo-11/pages/` | Um deck por módulo; hoje só `9_modulo-09` existe |
 | 4 | `conclusao/pages/` | Encerramento |
 
 Não é necessário juntar PDFs. A ordem entre pastas define a narrativa da apresentação (~45 min).
 
 Formato dos slides: 16:9 (1920×1080 pt). No Google Slides, use apresentação widescreen.
 
-## Padrão de um módulo (`modulo-XX/`)
+## Padrão de um módulo (`X_modulo-XX/`)
 
-Copie `modulo-09/` como modelo. Sequência de slides:
+Copie `9_modulo-09/` como modelo. Sequência de slides:
 
 1. `title-slide` (número e nome do módulo)
 2. Ligação com a proposta MX853 (2–4 bullets factuais)
@@ -82,12 +82,12 @@ Copie `modulo-09/` como modelo. Sequência de slides:
 
 (O slide "Obrigado" fica só na `conclusao/`, não em cada módulo.)
 
-Capas ITT (`shared/slide1.pdf` e `slide2.pdf`) ficam **apenas** em `_intro/`.
+Capas ITT (`shared/slide1.pdf` e `slide2.pdf`) ficam **apenas** em `0_intro/`.
 
 ### Criar seu módulo
 
 ```bash
-cp -R apresentacao_final/modulo-09 apresentacao_final/modulo-04
+cp -R apresentacao_final/9_modulo-09 apresentacao_final/4_modulo-04
 # Renomear modulo-09.typ → modulo-04.typ e ajustar conteúdo
 ```
 
